@@ -1,11 +1,13 @@
 # dbt demo
 
 This repository is a playground to learn how to use dbt and to test new features. It contains
-the famous jaffle shop data product from dbt labs. The repository has evolved from the original
+two dbt projects:
+- dbt/jaffle_shop: the famous jaffle shop data product from dbt labs. The repository has evolved from the original
 code you will find on the official dbt labs github page as we have extended with new features,
 packages, macros, etc.
+- dbt/dim_modelling: playground project for dimensional modelling. This is inspired from this [article](https://docs.getdbt.com/blog/kimball-dimensional-model)
 
-This repository is not linked to a Gitlab CI pipelien on purpose as goal is to experiment
+This repository is not linked to a Gitlab CI pipeline on purpose as goal is to experiment
 quickly.
 
 ## Quickstart
@@ -39,7 +41,8 @@ the following command:
 gcloud init
 ```
 
-5. You are now ready to run dbt commands within the dbt repository.
+5. You are now ready to run dbt commands within the dbt repository. You should start with the
+'jaffle_shop' example and then the 'dim_modelling'.
 
 This dbt project comes with two targets:
 
