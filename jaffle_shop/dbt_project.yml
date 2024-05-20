@@ -13,7 +13,7 @@ profile: "astrafy"
 # found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
 analysis-paths: ["analysis"]
-test-paths: ["tests"]
+test-paths: ["data-tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
@@ -64,7 +64,7 @@ seeds:
       relation: true
       columns: true
 
-tests:
+data_tests:
   +tags: demo_dbt
   +store_failures: true
 

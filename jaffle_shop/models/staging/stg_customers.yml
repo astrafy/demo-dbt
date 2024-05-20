@@ -4,6 +4,6 @@ models:
   - name: stg_customers
     columns:
       - name: customer_id
-        tests:
+        data_tests:
           - unique
           - not_null
