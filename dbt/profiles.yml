@@ -1,34 +1,28 @@
-config:
-  partial_parse: true
-  use_colors: true
-  printer_width: 80
-  send_anonymous_usage_stats: false
-
 astrafy:
   target: sbx
   outputs:
     sbx:
       type: bigquery
       method: oauth
-      project: dbt-demo-aaa
-      execution_project: dbt-demo-aaa
+      project: dbt-demos-6ad5
+      execution_project: dbt-demos-6ad5
       schema: na
       threads: 4
       timeout_seconds: 300
       location: EU
       priority: interactive
       retries: 1
-      impersonate_service_account: sa-dbt-demo@dbt-demo-aaa.iam.gserviceaccount.com
+      impersonate_service_account: sa-dbt-demo@dbt-demos-6ad5.iam.gserviceaccount.com
 
     prd:
       type: bigquery
       method: oauth
-      project: dbt-demo-aaa
-      execution_project: dbt-demo-aaa
+      project: dbt-demos-6ad5
+      execution_project: dbt-demos-6ad5
       schema: na
       threads: 4
       timeout_seconds: 300
       location: EU
       priority: interactive
       retries: 1
-      impersonate_service_account: sa-dbt-demo@dbt-demo-aaa.iam.gserviceaccount.com
+      impersonate_service_account: sa-dbt-demo@dbt-demos-6ad5.iam.gserviceaccount.com

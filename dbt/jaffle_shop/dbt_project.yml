@@ -24,7 +24,7 @@ clean-targets: # folders to be removed by `dbt clean`
   - "dbt_packages"
   - "logs"
 
-require-dbt-version: [">=1.4.0", "<2.0.0"]
+require-dbt-version: [">=1.8.0", "<2.0.0"]
 
 query-comment:
   comment: "{{ query_comment(node) }}"
@@ -37,23 +37,19 @@ quoting:
 
 vars:
   'dbt_date:time_zone': "Europe/Paris"
-  re_data:save_test_history: true
-
-#on-run-end: "{% if not var('artifact', False) %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
 
 models:
   +tags: demo_dbt
   astrafy_dbt_demo:
-    jaffle_shop:
-      +tags:
-        - jaffle_shop
-      staging:
-        +persist_docs:
-          relation: true
-          columns: true
-        +materialized: table
-      datamart:
-        +materialized: table
+    +tags:
+      - jaffle_shop
+    staging:
+      +persist_docs:
+        relation: true
+        columns: true
+      +materialized: table
+    datamart:
+      +materialized: table
 
   elementary:
     +enabled: true
@@ -61,18 +57,16 @@ models:
   dbt_project_evaluator:
     +enabled: true
 
-  dbt_artifacts:
-    +enabled: false
-
 seeds:
   +tags: demo_dbt
   astrafy_dbt_demo:
     +persist_docs:
       relation: true
       columns: true
-    jaffle_shop:
-      +tags: jaffle_shop
 
 tests:
   +tags: demo_dbt
-  +store_failures: true  # all tests
+  +store_failures: true
+
+flags:
+ require_explicit_package_overrides_for_builtin_materializations: false
