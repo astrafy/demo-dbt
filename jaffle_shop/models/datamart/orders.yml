@@ -78,6 +78,9 @@ models:
 
       - name: last_name
         description: Customer's last name. PII.
+      
+      - name: email
+        description: Customer's email. PII.
 
       - name: first_order
         description: Date (UTC) of a customer's first order

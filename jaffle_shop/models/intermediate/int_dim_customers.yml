@@ -1,0 +1,39 @@
+version: 2
+
+unit_tests:
+  - name: test_is_valid_email_address
+    description: "Check my is_valid_email_address logic captures all known edge cases - emails without ., emails without @, and emails from invalid domains."
+    model: int_dim_customers
+    given:
+      - input: ref('stg_customers')
+        rows:
+          - {email: cool@example.com}
+          - {email: badgmail.com}
+          - {email: missingdot@gmailcom}
+    expect:
+      rows:
+        - {email: cool@example.com,    is_valid_email_address: true}
+        - {email: badgmail.com,        is_valid_email_address: false}
+        - {email: missingdot@gmailcom, is_valid_email_address: false}
+
+models:
+  - name: int_dim_customers
+    description: This table has basic information about a customer
+    columns:
+      - name: customer_id
+        description: This is a unique identifier for a customer
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: Customer's first name. PII.
+
+      - name: last_name
+        description: Customer's last name. PII.
+      
+      - name: email
+        description: Customer's email. PII.
+
+      - name: is_valid_email_address
+        description: Checks whether or not the customer's email is valid.
