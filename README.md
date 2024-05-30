@@ -48,3 +48,25 @@ This dbt project comes with two targets:
 
 - **sbx** target: it will materialize the models in the sandbox datasets with your $USER prepended to the table names (either file name or alias defined in config)
 - **prd** target: it will materialize the models in the prd datasets with the vanilla table names (either file name or alias defined in config)
+
+## Features
+
+### Unit Tests
+
+Unit tests are defined in YAML files located within the `/models` directory. In this repository, unit tests are available in the `jaffle_shop` directory, specifically at `jaffle_shop/models/intermediate/int_dim_customers.yml`.
+
+To run unit tests, use the following command:
+
+```sh
+dbt test --select test_type:unit
+```
+
+### dbt --empty flag
+
+The --empty flag in dbt limits the rows returned by ref and source functions to zero. This allows dbt to execute the model SQL against the target data warehouse without performing expensive reads of input data.
+
+To use this flag, use the following command:
+
+```sh
+dbt run --select stg_customers --empty
+```
