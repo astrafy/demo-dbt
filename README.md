@@ -41,7 +41,9 @@ the following command:
 gcloud init
 ```
 
-5. You are now ready to run dbt commands within the dbt repository. You should start with the
+5. You also need to go to `macros/db_ds_tbl_id_generator` and replace all with your own project ids.
+
+6. You are now ready to run dbt commands within the dbt repository. You should start with the
 'jaffle_shop' example and then the 'dim_modelling'.
 
 This dbt project comes with two targets:
@@ -76,7 +78,8 @@ Elementary allows you to configure and execute data tests just like native dbt t
 
 The anomaly detection tests configuration is defined in .yml files in your dbt project, just like in native dbt tests.
 
-For example:
+Here is an example of volume anomalies test in the model `orders`:
+
 ```yml
 tests:
     - elementary.volume_anomalies:
@@ -91,4 +94,10 @@ tests:
         count: 30
         ignore_small_changes:
         spike_failure_percent_threshold: 0.01
+```
+
+To run this test, run the following command:
+
+```sh
+dbt test --select orders
 ```
