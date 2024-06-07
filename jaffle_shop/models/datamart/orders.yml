@@ -93,3 +93,16 @@ models:
 
       - name: customer_status
         description: The status of the customer and whether they are churned, at risk of churn, or healthy
+    tests:
+      - elementary.volume_anomalies:
+          timestamp_column: "order_date"
+          anomaly_sensitivity: 2
+          anomaly_direction: "both"
+          detection_period:
+            period: day
+            count: 7
+          training_period:
+            period: day
+            count: 30
+          ignore_small_changes:
+            spike_failure_percent_threshold: 0.01
