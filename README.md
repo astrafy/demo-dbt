@@ -70,3 +70,25 @@ To use this flag, use the following command:
 ```sh
 dbt run --select stg_customers --empty
 ```
+
+### Elementary Anomaly Detection
+Elementary allows you to configure and execute data tests just like native dbt tests. These tests help monitor specific metrics, such as row count, null rate, and average value, to detect significant changes and deviations.
+
+The anomaly detection tests configuration is defined in .yml files in your dbt project, just like in native dbt tests.
+
+For example:
+```yml
+tests:
+    - elementary.volume_anomalies:
+        timestamp_column: "order_date"
+        anomaly_sensitivity: 2
+        anomaly_direction: "both"
+        detection_period:
+        period: day
+        count: 7
+        training_period:
+        period: day
+        count: 30
+        ignore_small_changes:
+        spike_failure_percent_threshold: 0.01
+```
